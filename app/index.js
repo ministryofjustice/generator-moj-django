@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
 
-var DjangoKaijuGenerator = yeoman.generators.Base.extend({
+var DjangoMoJGenerator = yeoman.generators.Base.extend({
   // Override constructor
   constructor: function() {
     // Calling the super constructor is important so our generator is correctly setup
@@ -46,7 +46,7 @@ var DjangoKaijuGenerator = yeoman.generators.Base.extend({
   prompting: function() {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Yo Django Kaiju!'
+      'Yo MoJ!'
     ));
 
     var done = this.async();
@@ -94,30 +94,30 @@ var DjangoKaijuGenerator = yeoman.generators.Base.extend({
       this.secretKey = require('crypto').randomBytes(Math.ceil(50 * 3 / 4)).toString('base64');
       this.dest.write(path.join(this.projectName, '__init__.py'), '');
       this.template('manage.py', 'manage.py');
-      this.template('kaiju/urls.py', this.projectName + '/urls.py');
-      this.template('kaiju/wsgi.py', this.projectName + '/wsgi.py');
+      this.template('moj/urls.py', this.projectName + '/urls.py');
+      this.template('moj/wsgi.py', this.projectName + '/wsgi.py');
       this.dest.mkdir(path.join(this.projectName, 'apps'));
       this.dest.write(path.join(this.projectName, 'apps', '__init__.py'), '');
 
       // Scaffold the core app
       this.dest.mkdir(path.join(this.projectName, 'apps', 'core'));
       this.dest.write(path.join(this.projectName, 'apps', 'core', '__init__.py'), '');
-      this.src.copy('kaiju/apps/core/admin.py', this.projectName + '/apps/core/admin.py');
-      this.src.copy('kaiju/apps/core/context_processors.py', this.projectName + '/apps/core/context_processors.py');
-      this.src.copy('kaiju/apps/core/models.py', this.projectName + '/apps/core/models.py');
-      this.src.copy('kaiju/apps/core/tests.py', this.projectName + '/apps/core/tests.py');
-      this.src.copy('kaiju/apps/core/views.py', this.projectName + '/apps/core/views.py');
+      this.src.copy('moj/apps/core/admin.py', this.projectName + '/apps/core/admin.py');
+      this.src.copy('moj/apps/core/context_processors.py', this.projectName + '/apps/core/context_processors.py');
+      this.src.copy('moj/apps/core/models.py', this.projectName + '/apps/core/models.py');
+      this.src.copy('moj/apps/core/tests.py', this.projectName + '/apps/core/tests.py');
+      this.src.copy('moj/apps/core/views.py', this.projectName + '/apps/core/views.py');
       this.dest.mkdir(path.join(this.projectName, 'apps', 'core', 'migrations'));
       this.dest.write(path.join(this.projectName, 'apps', 'core', 'migrations', '__init__.py'), '');
-      this.template('kaiju/apps/core/templates/base.html', this.projectName + '/apps/core/templates/base.html');
-      this.src.copy('kaiju/apps/core/templates/core/index.html', this.projectName + '/apps/core/templates/core/index.html');
+      this.template('moj/apps/core/templates/base.html', this.projectName + '/apps/core/templates/base.html');
+      this.src.copy('moj/apps/core/templates/core/index.html', this.projectName + '/apps/core/templates/core/index.html');
 
       // Django settings
       this.dest.mkdir(path.join(this.projectName, 'settings'));
       this.dest.write(path.join(this.projectName, 'settings', '__init__.py'), '');
-      this.template('kaiju/settings/base.py', this.projectName + '/settings/base.py');
-      this.template('kaiju/settings/prod.py', this.projectName + '/settings/prod.py');
-      this.template('kaiju/settings/dev.py', this.projectName + '/settings/dev.py');
+      this.template('moj/settings/base.py', this.projectName + '/settings/base.py');
+      this.template('moj/settings/prod.py', this.projectName + '/settings/prod.py');
+      this.template('moj/settings/dev.py', this.projectName + '/settings/dev.py');
     },
     projectFiles: function() {
       this.template('_bowerrc', '.bowerrc');
@@ -129,8 +129,8 @@ var DjangoKaijuGenerator = yeoman.generators.Base.extend({
       // This particular file requires us to change the underscore tags
       // to {{ }}
       this.template(
-        'Gruntfile.js',
-        'Gruntfile.js',
+        'gulpfile.js',
+        'gulpfile.js',
         this, {
           evaluate: /\{\{([\s\S]+?)\}\}/g,
           interpolate: /\{\{=([\s\S]+?)\}\}/g,
@@ -144,12 +144,12 @@ var DjangoKaijuGenerator = yeoman.generators.Base.extend({
       this.template('requirements/prod.txt', 'requirements/prod.txt');
     },
     foundationFiles: function() {
-      this.src.copy('kaiju/apps/core/assets/_gitignore', this.projectName + '/apps/core/assets/.gitignore');
+      this.src.copy('moj/apps/core/assets/_gitignore', this.projectName + '/apps/core/assets/.gitignore');
       if (this.features.indexOf('foundation') !== -1) {
-        this.src.copy('kaiju/apps/core/assets/app/scss/app.scss', this.projectName + '/apps/core/assets/app/scss/app.scss');
-        this.src.copy('kaiju/apps/core/assets/app/scss/_settings.scss', this.projectName + '/apps/core/assets/app/scss/_settings.scss');
-        this.src.copy('kaiju/apps/core/assets/app/scss/_styles.scss', this.projectName + '/apps/core/assets/app/scss/_styles.scss');
-        this.src.copy('kaiju/apps/core/assets/app/js/app.js', this.projectName + '/apps/core/assets/app/js/app.js');
+        this.src.copy('moj/apps/core/assets/app/scss/app.scss', this.projectName + '/apps/core/assets/app/scss/app.scss');
+        this.src.copy('moj/apps/core/assets/app/scss/_settings.scss', this.projectName + '/apps/core/assets/app/scss/_settings.scss');
+        this.src.copy('moj/apps/core/assets/app/scss/_styles.scss', this.projectName + '/apps/core/assets/app/scss/_styles.scss');
+        this.src.copy('moj/apps/core/assets/app/js/app.js', this.projectName + '/apps/core/assets/app/js/app.js');
       } else {
         this.dest.write(this.projectName + '/apps/core/assets/app/scss/app.scss', '// Your sass styles go here');
         this.dest.write(this.projectName + '/apps/core/assets/app/js/app.js', '// Your scripts go here');
@@ -179,4 +179,4 @@ var DjangoKaijuGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = DjangoKaijuGenerator;
+module.exports = DjangoMoJGenerator;

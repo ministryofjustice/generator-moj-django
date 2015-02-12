@@ -6,7 +6,7 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
-describe('django-kaiju:app', function() {
+describe('moj-django:app', function() {
   before(function(done) {
     helpers.run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temptest'))
@@ -59,7 +59,7 @@ describe('django-kaiju:app', function() {
       '.gitignore',
       '.jshintrc',
       'bower.json',
-      'Gruntfile.js',
+      'gulpfile.js',
       'package.json',
 
       // Requirements

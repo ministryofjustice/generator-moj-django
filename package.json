@@ -1,14 +1,14 @@
 {
-  "name": "generator-django-kaiju",
+  "name": "generator-moj-django",
   "version": "1.2.0",
-  "description": "Yeoman generator for Django that includes a live reloading development server, sass support, Foundation 5 and Heroku integration.",
+  "description": "MoJ Yeoman generator for Django that includes a live reloading development server, sass support, Foundation 5 and Heroku integration.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "mixxorz/generator-django-kaiju",
+  "repository": "ministryofjustice/generator-moj-django",
   "author": {
-    "name": "Mitchel Cabuloy",
-    "email": "mitchel.cabuloy@gmail.com",
-    "url": "https://github.com/mixxorz"
+    "name": "MoJ",
+    "email": "contact@digital.justice.gov.uk",
+    "url": "https://github.com/ministryofjustice"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -23,8 +23,8 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "chalk": "^0.5.0",
-    "yeoman-generator": "^0.17.0",
+    "chalk": "^0.5.1",
+    "yeoman-generator": "^0.17.7",
     "yosay": "^0.3.0"
   },
   "devDependencies": {

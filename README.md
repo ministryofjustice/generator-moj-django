@@ -1,4 +1,4 @@
-# generator-django-kaiju [![Build Status](https://travis-ci.org/mixxorz/generator-django-kaiju.svg?branch=master)](https://travis-ci.org/mixxorz/generator-django-kaiju)
+# generator-moj-django [![Build Status](https://travis-ci.org/mixxorz/generator-moj-django.svg?branch=master)](https://travis-ci.org/mixxorz/generator-moj-django)
 
 > [Yeoman](http://yeoman.io) generator for Django that includes a live reloading development server, sass support, Foundation 5 and Heroku integration.
 
@@ -10,7 +10,7 @@ This generator...
 
 * Scaffolds your Django app with good conventions. (core app, multiple settings, etc.)
 * Sets up `sass`
-* Sets up live reloading development server via grunt
+* Sets up live reloading development server via gulp
 * Configures a `build` task that minifies and concatenates your css/js/images.
 * Sets up Foundation 5
 * Sets up Font Awesome
@@ -18,9 +18,9 @@ This generator...
 
 ### Usage
 
-Install `generator-django-kaiju`:
+Install `generator-moj-django`:
 ```
-npm install -g generator-django-kaiju
+npm install -g generator-moj-django
 ```
 
 Make a new directory, and `cd` into it:
@@ -38,15 +38,15 @@ Or if you're using virtualenvwrapper
 mkvirtualenv myvenv
 ```
 
-Run `yo django-kaiju`, optionally passing your project's name
+Run `yo moj-django`, optionally passing your project's name
 ```
-yo django-kaiju [appname]
+yo moj-django [appname]
 ```
 
-### Grunt tasks
+### Gulp tasks
 
-* `grunt [default]`  - starts the Django development server and the live reloading server.
-* `grunt build` - concatenates, copies and minifies css/js/images into `core/assets/dist`
+* `gulp [default]`  - starts the Django development server and the live reloading server.
+* `gulp build` - concatenates, copies and minifies css/js/images into `core/assets/dist`
 
 ### Heroku
 A few things need to be setup in your Heroku app
