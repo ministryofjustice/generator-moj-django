@@ -9,7 +9,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {<% if(_.contains(features, 'foundation')){ %>
+  "dependencies": {
+    "lodash": "~2.4.1"<% if(_.contains(features, 'foundation')){ %>,
     "foundation": "zurb/bower-foundation#~5.4.7"<% } %><% if(_.contains(features, 'fontawesome')){ %>,
     "font-awesome": "~4.2.0"<% } %>
   }

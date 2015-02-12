@@ -68,16 +68,20 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       message: 'What stuff do you want to include?',
       choices: [{
         name: 'Foundation 5',
-        checked: true,
+        checked: false,
         value: 'foundation'
       }, {
         name: 'Font Awesome',
-        checked: true,
+        checked: false,
         value: 'fontawesome'
       }, {
         name: 'Heroku integration',
         checked: true,
         value: 'heroku'
+      }, {
+        name: 'Docker & Fig',
+        checked: true,
+        value: 'docker'
       }]
     });
 
@@ -114,7 +118,7 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
 
       // Django settings
       this.dest.mkdir(path.join(this.projectName, 'settings'));
-      this.dest.write(path.join(this.projectName, 'settings', '__init__.py'), '');
+      this.template('moj/settings/__init__.py', this.projectName + '/settings/__init__.py');
       this.template('moj/settings/base.py', this.projectName + '/settings/base.py');
       this.template('moj/settings/prod.py', this.projectName + '/settings/prod.py');
       this.template('moj/settings/dev.py', this.projectName + '/settings/dev.py');
@@ -142,6 +146,8 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.template('requirements/base.txt', 'requirements/base.txt');
       this.src.copy('requirements/dev.txt', 'requirements/dev.txt');
       this.template('requirements/prod.txt', 'requirements/prod.txt');
+      this.dest.mkdir('tasks');
+      this.directory('tasks', 'tasks');
     },
     foundationFiles: function() {
       this.src.copy('moj/apps/core/assets/_gitignore', this.projectName + '/apps/core/assets/.gitignore');
@@ -171,7 +177,7 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       // Check if inside virtualenv
       if(process.env.VIRTUAL_ENV) {
         this.log(chalk.yellow('Also installing Python dependencies with pip.'));
-        this.spawnCommand('pip install -r requirements/dev.txt');
+        this.spawnCommand('pip', ['install', '-r', 'requirements/dev.txt']);
       } else {
         this.log(chalk.yellow('You are not in a Python Virtualenv. Install the Python dependencies manually using `pip install -r requirements/dev.txt`.'));
       }
