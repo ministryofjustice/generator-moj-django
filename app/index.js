@@ -121,7 +121,6 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.template('moj/settings/__init__.py', this.projectName + '/settings/__init__.py');
       this.template('moj/settings/base.py', this.projectName + '/settings/base.py');
       this.template('moj/settings/prod.py', this.projectName + '/settings/prod.py');
-      this.template('moj/settings/dev.py', this.projectName + '/settings/dev.py');
     },
     projectFiles: function() {
       this.template('_bowerrc', '.bowerrc');

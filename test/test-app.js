@@ -50,7 +50,6 @@ describe('moj-django:app', function() {
       'temptest/settings/__init__.py',
       'temptest/settings/base.py',
       'temptest/settings/prod.py',
-      'temptest/settings/dev.py',
 
       // Project
       '.bowerrc',
