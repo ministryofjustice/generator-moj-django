@@ -9,7 +9,6 @@ gulp.task('scripts', ['clean-js'], function() {
   var scripts = paths.vendor_scripts.concat(paths.scripts);
 
   var stream = gulp.src(scripts)
-    .pipe(withoutDebug)
     .pipe(concat('app.js'))
     .pipe(gulp.dest(paths.dest + 'javascripts'));
 

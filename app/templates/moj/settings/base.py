@@ -24,7 +24,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 
-SECRECT_KEY = 'CHANGE_ME'
+SECRET_KEY = 'CHANGE_ME'
 
 # Application definition
 
@@ -120,6 +120,17 @@ LOGGING = {
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     '<%= projectName %>.apps.core.context_processors.debug',
 )
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '<%= projectName %>',
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST',''),                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': os.environ.get('POSTGRES_PORT',''),                      # Set to empty string for default.
+    }
+}
 
 try:
     from .local import *
