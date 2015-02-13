@@ -24,6 +24,8 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 
+SECRECT_KEY = 'CHANGE_ME'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -54,7 +56,7 @@ WSGI_APPLICATION = '<%= projectName %>.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 
@@ -69,7 +71,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/assets/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'assets')
+]
+
+TEMPLATE_DIRS = [
+    os.path.join(BASE_DIR, 'templates')
+]
 
 # Sane logging defaults
 LOGGING = {
@@ -111,3 +120,8 @@ LOGGING = {
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     '<%= projectName %>.apps.core.context_processors.debug',
 )
+
+try:
+    from .local import *
+except ImportError:
+    pass

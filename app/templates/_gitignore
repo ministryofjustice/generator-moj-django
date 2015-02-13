@@ -27,3 +27,4 @@ venv/
 # Node Stuff
 node_modules
 
+assets-src/bower

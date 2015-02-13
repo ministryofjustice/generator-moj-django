@@ -7,15 +7,10 @@ var concat = require('gulp-concat');
 
 gulp.task('scripts', ['clean-js'], function() {
   var scripts = paths.vendor_scripts.concat(paths.scripts);
-  var withoutDebug = filter(['**/*.js', '!**/*debug*']);
 
   var stream = gulp.src(scripts)
     .pipe(withoutDebug)
-    .pipe(concat('<%= projectName %>.js'))
-    .pipe(gulp.dest(paths.dest + 'javascripts'));
-
-  withoutDebug.restore({ end: true })
-    .pipe(concat('<%= projectName %>-debug.js'))
+    .pipe(concat('app.js'))
     .pipe(gulp.dest(paths.dest + 'javascripts'));
 
   return stream;

@@ -36,6 +36,7 @@ DATABASES = {
 DATABASES = {}
 <% } %>
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'apps', 'core', 'assets', 'dist'),
-)
+SECRET_KEY = os.environ['SECRET_KEY']
+
+DEBUG = False
+TEMPLATE_DEBUG = DEUBG

@@ -37,15 +37,14 @@ describe('moj-django:app', function() {
       'temptest/apps/core/tests.py',
       'temptest/apps/core/views.py',
       'temptest/apps/core/migrations/__init__.py',
-      'temptest/apps/core/templates/base.html',
-      'temptest/apps/core/templates/core/index.html',
+      'temptest/templates/base.html',
+      'temptest/templates/core/index.html',
 
       // Assets
-      'temptest/apps/core/assets/.gitignore',
-      'temptest/apps/core/assets/app/scss/app.scss',
-      'temptest/apps/core/assets/app/scss/_settings.scss',
-      'temptest/apps/core/assets/app/scss/_styles.scss',
-      'temptest/apps/core/assets/app/js/app.js',
+      'temptest/assets-src/stylesheets/app.scss',
+      'temptest/assets-src/stylesheets/_settings.scss',
+      'temptest/assets-src/stylesheets/_styles.scss',
+      'temptest/assets-src/javascripts/app.js',
 
       // Settings
       'temptest/settings/__init__.py',

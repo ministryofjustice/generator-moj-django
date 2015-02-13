@@ -113,8 +113,8 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.src.copy('moj/apps/core/views.py', this.projectName + '/apps/core/views.py');
       this.dest.mkdir(path.join(this.projectName, 'apps', 'core', 'migrations'));
       this.dest.write(path.join(this.projectName, 'apps', 'core', 'migrations', '__init__.py'), '');
-      this.template('moj/apps/core/templates/base.html', this.projectName + '/apps/core/templates/base.html');
-      this.src.copy('moj/apps/core/templates/core/index.html', this.projectName + '/apps/core/templates/core/index.html');
+      this.template('moj/templates/base.html', this.projectName + '/templates/base.html');
+      this.src.copy('moj/templates/core/index.html', this.projectName + '/templates/core/index.html');
 
       // Django settings
       this.dest.mkdir(path.join(this.projectName, 'settings'));
@@ -150,15 +150,14 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.directory('tasks', 'tasks');
     },
     foundationFiles: function() {
-      this.src.copy('moj/apps/core/assets/_gitignore', this.projectName + '/apps/core/assets/.gitignore');
       if (this.features.indexOf('foundation') !== -1) {
-        this.src.copy('moj/apps/core/assets/app/scss/app.scss', this.projectName + '/apps/core/assets/app/scss/app.scss');
-        this.src.copy('moj/apps/core/assets/app/scss/_settings.scss', this.projectName + '/apps/core/assets/app/scss/_settings.scss');
-        this.src.copy('moj/apps/core/assets/app/scss/_styles.scss', this.projectName + '/apps/core/assets/app/scss/_styles.scss');
-        this.src.copy('moj/apps/core/assets/app/js/app.js', this.projectName + '/apps/core/assets/app/js/app.js');
+        this.src.copy('moj/assets-src/stylesheets/app.scss', this.projectName + '/assets-src/stylesheets/app.scss');
+        this.src.copy('moj/assets-src/stylesheets/_settings.scss', this.projectName + '/assets-src/stylesheets/_settings.scss');
+        this.src.copy('moj/assets-src/stylesheets/_styles.scss', this.projectName + '/assets-src/stylesheets/_styles.scss');
+        this.src.copy('moj/assets-src/javascripts/app.js', this.projectName + '/assets-src/javascripts/app.js');
       } else {
-        this.dest.write(this.projectName + '/apps/core/assets/app/scss/app.scss', '// Your sass styles go here');
-        this.dest.write(this.projectName + '/apps/core/assets/app/js/app.js', '// Your scripts go here');
+        this.dest.write(this.projectName + '/assets-src/stylesheets/app.scss', '// Your sass styles go here');
+        this.dest.write(this.projectName + '/assets-src/javascripts/app.js', '// Your scripts go here');
       }
     },
     herokuFiles: function() {
