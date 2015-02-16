@@ -1,3 +1,6 @@
 node_modules/
 env/
 .DS_Store
+generator-moj-django.iml
+generator-moj-django.ipr
+generator-moj-django.iws

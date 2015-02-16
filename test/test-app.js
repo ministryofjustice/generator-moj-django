@@ -15,7 +15,7 @@ describe('moj-django:app', function() {
       })
       .withPrompt({
         projectName: 'temptest',
-        features: ['foundation', 'fontawesome', 'heroku']
+        features: ['foundation', 'fontawesome', 'heroku', 'docker']
       })
       .on('end', done);
   });
@@ -68,7 +68,10 @@ describe('moj-django:app', function() {
       // Heroku
       'Procfile',
       'requirements.txt',
-      '.buildpacks'
+      '.buildpacks',
+
+      // Docker
+      'fig.yml'
     ]);
   });
 });

@@ -127,7 +127,6 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.src.copy('_editorconfig', '.editorconfig');
       this.src.copy('_gitignore', '.gitignore');
       this.src.copy('_jshintrc', '.jshintrc');
-      this.template('Dockerfile', 'Dockerfile');
       // TODO: Add Font-Awesome support
       this.template('bower.json', 'bower.json');
       // This particular file requires us to change the underscore tags
@@ -146,12 +145,8 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
       this.template('requirements/base.txt', 'requirements/base.txt');
       this.src.copy('requirements/dev.txt', 'requirements/dev.txt');
       this.template('requirements/prod.txt', 'requirements/prod.txt');
-      this.template('fig.yml', 'fig.yml');
       this.dest.mkdir('tasks');
       this.directory('tasks', 'tasks');
-      this.directory('docker', 'docker');
-      this.template('docker/postgres/create-database.sh', 'docker/postgres/create-database.sh');
-      this.directory('conf', 'conf');
     },
     foundationFiles: function() {
       if (this.features.indexOf('foundation') !== -1) {
@@ -169,6 +164,15 @@ var DjangoMoJGenerator = yeoman.generators.Base.extend({
         this.template('Procfile', 'Procfile');
         this.src.copy('requirements.txt', 'requirements.txt');
         this.src.copy('_buildpacks', '.buildpacks');
+      }
+    },
+    dockerFiles: function () {
+      if (this.features.indexOf('docker') !== -1) {
+        this.directory('docker', 'docker');
+        this.template('docker/postgres/create-database.sh', 'docker/postgres/create-database.sh');
+        this.directory('conf', 'conf');
+        this.template('fig.yml', 'fig.yml');
+        this.template('Dockerfile', 'Dockerfile');
       }
     }
   },
